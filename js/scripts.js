@@ -1,9 +1,9 @@
 // // Business Logic //
 var vowels =["a","A","e","E","i" ,"I","o","O","u","U"];
 var regex = /^[a-zA-Z ]+$/gi;
-// vowels.indexOf("a");
+var regexQu = /(qu)/ig;
 
-// Ux //
+// UI //
 $(document).ready(function() {
   $("form#input").submit(function(event) {
     event.preventDefault();
@@ -13,7 +13,9 @@ $(document).ready(function() {
     console.log(regex);
 
     var match = (inputStr.match(regex));
-    console.log(match);
+    var matchQu = (inputStr.match(regexQu));
+
+    console.log(matchQu);
     // var ay = [];
 
     for(var i=0; i<inputArr.length; i++){
@@ -21,11 +23,18 @@ $(document).ready(function() {
       vowels.indexOf(inputArr[i].charAt(0));
       // console.log(inputArr[i].charAt(0));
       // console.log(vowels.indexOf(inputArr[i].charAt(0)));
-       if (match === null) {
+
+      if (vowels.indexOf(inputArr[i].charAt(0)) === -1){
+       $(".output").text("move first letter to the end of element and add 'ay'!");
+      if (vowels.indexOf(inputArr[i].charAt(0)) >= 0){
+        $(".output").text("add 'ay' to the end of the element!");
+      // } if (inputStr.match(regexQu)) === -1){
+      //   $(".output").text("move 'sq' and all proceeding letters to the end of element and add 'ay'!");
+       }  else if (match === null) {
          $("p#false").show();
-         alert("Please use words with only alphabetical letters.");
       console.log(inputStr.match(regex));
       }
+    }
     }
   });
 });
