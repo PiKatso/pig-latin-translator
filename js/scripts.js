@@ -1,6 +1,6 @@
 // // Business Logic //
 var vowels =["a","A","e","E","i" ,"I","o","O","u","U"];
-
+var regex = /^[a-zA-Z ]+$/gi;
 // vowels.indexOf("a");
 
 // Ux //
@@ -8,30 +8,24 @@ $(document).ready(function() {
   $("form#input").submit(function(event) {
     event.preventDefault();
 
-    var input = ($("input#uxInput").val()).split(" ");
-    console.log(input);
-    var ay = [];
+    var inputArr = ($("input#uxInput").val()).split(" ");
+    var inputStr = ($("input#uxInput").val());
+    console.log(regex);
 
-    for(var i=0; i<input.length; i++){
-      input[i][0] = input[i][0].charAt(0);
-      console.log(input[i].charAt(0));
-       console.log(vowels.indexOf(input[i].charAt(0)));
+    var match = (inputStr.match(regex));
+    console.log(match);
+    // var ay = [];
+
+    for(var i=0; i<inputArr.length; i++){
+      inputArr[i][0] = inputArr[i][0].charAt(0);
+      vowels.indexOf(inputArr[i].charAt(0));
+      // console.log(inputArr[i].charAt(0));
+      // console.log(vowels.indexOf(inputArr[i].charAt(0)));
+       if (match === null) {
+         $("p#false").show();
+         alert("Please use words with only alphabetical letters.");
+      console.log(inputStr.match(regex));
+      }
     }
-
-
-    //   function vowelRegEx(char)
-    //   {
-    //     if (char.length == 1)
-    //     {
-    //       return /[aeiou]/.test(char);
-    //     }
-    //   }
-    // }
-
-      // var char0 = (input[i].charAt(0));
-    //   console.log(input[i]);
-    // } return ;
-
-
   });
 });
